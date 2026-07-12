@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
-import { getRecentReadings, getTodaysReadingCount } from '@/lib/readings';
+import { getTodaysReadingCount } from '@/lib/readings';
 import { TarotStage } from '@/components/tarot-stage';
 
 export default async function DashboardPage() {
@@ -11,12 +11,7 @@ export default async function DashboardPage() {
     redirect('/');
   }
 
-  const [readingCount, readings] = await Promise.all([
-    getTodaysReadingCount(supabase, data.user.id),
-    getRecentReadings(supabase, data.user.id)
-  ]);
+  const readingCount = await getTodaysReadingCount(supabase, data.user.id);
 
-  return (
-    <TarotStage userId={data.user.id} initialReadingCount={readingCount} initialReadings={readings} />
-  );
+  return <TarotStage userId={data.user.id} initialReadingCount={readingCount} />;
 }

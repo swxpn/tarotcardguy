@@ -63,7 +63,7 @@ export default async function ReadingPage({ params }: ReadingPageProps) {
             This public link shows the three-card spread and the meanings that were drawn at the moment the
             reading was created.
           </p>
-          <p className="mt-4 text-xs uppercase tracking-[0.35em] text-slate-400">Reading ID: {reading.id}</p>
+          <p className="mt-4 text-xs uppercase tracking-[0.35em] text-slate-400">Shared reading</p>
         </section>
 
         <section className="grid gap-4 md:grid-cols-3">

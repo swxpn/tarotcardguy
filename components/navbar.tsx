@@ -1,12 +1,14 @@
 import Link from 'next/link';
 import { UserCircle2 } from 'lucide-react';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getLatestReading } from '@/lib/readings';
 import { LogoutButton } from '@/components/logout-button';
 
 export async function Navbar() {
   const supabase = await createSupabaseServerClient();
   const { data } = await supabase.auth.getUser();
   const user = data.user;
+  const latestReading = user ? await getLatestReading(supabase, user.id) : null;
 
   return (
     <header className="border-b border-white/10 bg-slate-950/40 backdrop-blur-xl">
@@ -18,6 +20,14 @@ export async function Navbar() {
         <div className="flex items-center gap-3">
           {user ? (
             <>
+              {latestReading ? (
+                <Link
+                  href={`/reading/${latestReading.id}`}
+                  className="hidden rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-100 transition hover:bg-white/10 md:inline-flex"
+                >
+                  Recent Reading
+                </Link>
+              ) : null}
               <div className="hidden items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200 md:flex">
                 <UserCircle2 className="h-4 w-4 text-amber-200" />
                 <span>{user.email}</span>

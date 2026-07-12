@@ -11,16 +11,13 @@ import {
   createReadingRecord,
   getRemainingDailyReads,
   getTodaysReadingCount,
-  getRecentReadings
 } from '@/lib/readings';
 import type { DrawnTarotCard } from '@/lib/tarot/engine';
 import { TarotCardFace } from '@/components/tarot-card-face';
-import { ReadingHistory } from '@/components/reading-history';
 
 type TarotStageProps = {
   userId: string;
   initialReadingCount: number;
-  initialReadings: ReadingRecord[];
 };
 
 type ReadingResult = {
@@ -28,10 +25,9 @@ type ReadingResult = {
   cards: DrawnTarotCard[];
 };
 
-export function TarotStage({ userId, initialReadingCount, initialReadings }: TarotStageProps) {
+export function TarotStage({ userId, initialReadingCount }: TarotStageProps) {
   const supabase = useMemo(() => createSupabaseBrowserClient(), []);
   const [readingCount, setReadingCount] = useState(initialReadingCount);
-  const [readings, setReadings] = useState(initialReadings);
   const [isDrawing, setIsDrawing] = useState(false);
   const [drawnCards, setDrawnCards] = useState<DrawnTarotCard[]>([]);
   const [revealedCards, setRevealedCards] = useState<string[]>([]);
@@ -61,7 +57,6 @@ export function TarotStage({ userId, initialReadingCount, initialReadings }: Tar
 
     const reading = await createReadingRecord(supabase, userId, cards);
     setReadingCount(latestCount + 1);
-    setReadings((current) => [reading, ...current].slice(0, 5));
     setResult({ reading, cards });
     setIsDrawing(false);
   };
@@ -79,8 +74,8 @@ export function TarotStage({ userId, initialReadingCount, initialReadings }: Tar
   };
 
   return (
-    <section className="grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
-      <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+    <section className="grid gap-6">
+      <div className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur lg:p-10">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <p className="text-sm uppercase tracking-[0.35em] text-amber-200/80">Tarot Engine</p>
@@ -126,7 +121,7 @@ export function TarotStage({ userId, initialReadingCount, initialReadings }: Tar
           </div>
         ) : null}
 
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="mt-10 grid gap-5 md:grid-cols-3 md:gap-6">
           <AnimatePresence>
             {drawnCards.map((card, index) => {
               const isFaceUp = revealedCards.includes(card.id);
@@ -149,7 +144,7 @@ export function TarotStage({ userId, initialReadingCount, initialReadings }: Tar
         </div>
 
         {result ? (
-          <div className="mt-8 rounded-3xl border border-white/10 bg-black/20 p-5">
+          <div className="mt-10 rounded-3xl border border-white/10 bg-black/20 p-6">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <p className="text-sm uppercase tracking-[0.35em] text-amber-200/80">Reading Interpretation</p>
@@ -158,7 +153,7 @@ export function TarotStage({ userId, initialReadingCount, initialReadings }: Tar
               <p className="text-sm text-slate-400">Tap a card to reveal its meaning.</p>
             </div>
 
-            <div className="mt-5 grid gap-4 lg:grid-cols-3">
+            <div className="mt-6 grid gap-4 lg:grid-cols-3">
               {result.cards.map((card) => (
                 <div key={card.id} className="rounded-2xl border border-white/10 bg-white/5 p-4">
                   <p className="text-xs uppercase tracking-[0.35em] text-amber-200/80">{card.position}</p>
@@ -170,8 +165,6 @@ export function TarotStage({ userId, initialReadingCount, initialReadings }: Tar
           </div>
         ) : null}
       </div>
-
-      <ReadingHistory readings={readings} />
     </section>
   );
 }

@@ -77,6 +77,22 @@ export async function getRecentReadings(supabase: SupabaseClient, userId: string
   return (data ?? []) as ReadingRecord[];
 }
 
+export async function getLatestReading(supabase: SupabaseClient, userId: string) {
+  const { data, error } = await supabase
+    .from('readings')
+    .select('id, user_id, cards, created_at')
+    .eq('user_id', userId)
+    .order('created_at', { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (error) {
+    throw error;
+  }
+
+  return data as ReadingRecord | null;
+}
+
 export async function getReadingById(supabase: SupabaseClient, readingId: string) {
   const { data, error } = await supabase
     .rpc('get_reading_by_id', { reading_id: readingId })
