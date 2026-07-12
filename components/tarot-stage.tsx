@@ -171,18 +171,7 @@ export function TarotStage({ userId, initialReadingCount, initialReadings }: Tar
         ) : null}
       </div>
 
-      <div className="grid gap-6">
-        <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
-          <p className="text-sm uppercase tracking-[0.35em] text-amber-200/80">Daily Boundaries</p>
-          <h2 className="mt-2 text-2xl font-semibold">Keep the channel clear</h2>
-          <p className="mt-3 text-sm leading-6 text-slate-300">
-            You may draw up to four readings per UTC day. Once the limit is reached, the draw button stays
-            disabled until the next cycle begins.
-          </p>
-        </div>
-
-        <ReadingHistory readings={readings} />
-      </div>
+      <ReadingHistory readings={readings} />
     </section>
   );
 }
