@@ -197,9 +197,16 @@ export function TarotStage({ userId, initialReadingCount }: TarotStageProps) {
                     <h3 className="mt-2 text-xl font-semibold text-slate-50">
                       {isRevealed ? card.name : 'Reveal this card'}
                     </h3>
-                    <p className="mt-3 text-sm leading-6 text-slate-300">
-                      {isRevealed ? card.description : 'The interpretation appears after you flip this card.'}
-                    </p>
+                    {isRevealed ? (
+                      <div className="mt-3 space-y-3 text-sm leading-6 text-slate-300">
+                        <p>{card.description}</p>
+                        <p>{card.uprightMeaning}</p>
+                      </div>
+                    ) : (
+                      <p className="mt-3 text-sm leading-6 text-slate-300">
+                        The interpretation appears after you flip this card.
+                      </p>
+                    )}
                   </div>
                 );
               })}
