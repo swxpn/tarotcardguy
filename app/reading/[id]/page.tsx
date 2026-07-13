@@ -4,6 +4,7 @@ import { ArrowLeft, Sparkles } from 'lucide-react';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { getCardById, getReadingById } from '@/lib/readings';
 import { TarotCardArt } from '@/components/tarot-card-art';
+import { CopyReadingButton } from '@/components/copy-reading-button';
 
 type ReadingPageProps = {
   params: Promise<{
@@ -54,12 +55,14 @@ export default async function ReadingPage({ params }: ReadingPageProps) {
         </Link>
 
         <section className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur">
-          <div className="flex items-center gap-2 text-rose-200/80">
-            <Sparkles className="h-5 w-5" />
-            <p className="text-sm uppercase tracking-[0.35em]">Public Reading</p>
+          <div className="flex flex-wrap items-center justify-between gap-4 text-rose-200/80">
+            <div className="flex items-center gap-2">
+              <Sparkles className="h-5 w-5" />
+              <p className="text-sm uppercase tracking-[0.35em]">Last Reading</p>
+            </div>
+            <CopyReadingButton />
           </div>
           <h1 className="mt-4 text-4xl font-semibold md:text-6xl">Your reading is revealed.</h1>
-          <p className="mt-4 max-w-2xl text-slate-300">This public link shows the three-card spread as artwork.</p>
           <p className="mt-4 text-xs uppercase tracking-[0.35em] text-slate-400">Shared reading</p>
         </section>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { AlertTriangle, Copy, Sparkles, WandSparkles } from 'lucide-react';
 import { createSupabaseBrowserClient } from '@/lib/supabase/browser';
@@ -25,6 +25,21 @@ type ReadingResult = {
   cards: DrawnTarotCard[];
 };
 
+function getNextUtcMidnight() {
+  const now = new Date();
+  return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1));
+}
+
+function formatCountdown(targetTime: Date) {
+  const remainingMs = Math.max(targetTime.getTime() - Date.now(), 0);
+  const totalSeconds = Math.floor(remainingMs / 1000);
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  return [hours, minutes, seconds].map((value) => String(value).padStart(2, '0')).join(':');
+}
+
 export function TarotStage({ userId, initialReadingCount }: TarotStageProps) {
   const supabase = useMemo(() => createSupabaseBrowserClient(), []);
   const [readingCount, setReadingCount] = useState(initialReadingCount);
@@ -33,9 +48,21 @@ export function TarotStage({ userId, initialReadingCount }: TarotStageProps) {
   const [revealedCards, setRevealedCards] = useState<string[]>([]);
   const [message, setMessage] = useState<string | null>(null);
   const [result, setResult] = useState<ReadingResult | null>(null);
+  const [countdown, setCountdown] = useState(() => formatCountdown(getNextUtcMidnight()));
 
   const remaining = getRemainingDailyReads(readingCount);
   const canDraw = canDrawToday(readingCount);
+
+  useEffect(() => {
+    if (canDraw) return;
+
+    const updateCountdown = () => setCountdown(formatCountdown(getNextUtcMidnight()));
+
+    updateCountdown();
+    const interval = window.setInterval(updateCountdown, 1000);
+
+    return () => window.clearInterval(interval);
+  }, [canDraw]);
 
   const handleDraw = async () => {
     setMessage(null);
@@ -78,16 +105,20 @@ export function TarotStage({ userId, initialReadingCount }: TarotStageProps) {
       <div className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur lg:p-10">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <p className="text-sm uppercase tracking-[0.35em] text-rose-200/80">Tarot Engine</p>
-            <h1 className="mt-2 text-3xl font-semibold md:text-5xl">The veil is open.</h1>
+            <h1 className="mt-2 text-3xl font-semibold md:text-5xl">
+              {canDraw ? 'The veil is open.' : 'The veil is closed.'}
+            </h1>
             <p className="mt-3 max-w-2xl text-slate-300">
-              Draw a three-card spread for Past, Present, and Future. Cards flip one by one when you tap them.
+              {canDraw
+                ? 'Draw a three-card spread for Past, Present, and Future. Cards flip one by one when you tap them.'
+                : `Next draw activates in ${countdown}.`}
             </p>
           </div>
 
           <div className="rounded-2xl border border-rose-300/20 bg-rose-300/10 px-4 py-3 text-sm text-rose-50">
             <p className="text-xs uppercase tracking-[0.3em] text-rose-200/80">Today</p>
             <p className="mt-1 font-semibold">{remaining}/4 readings remaining</p>
+            {!canDraw ? <p className="mt-1 text-xs uppercase tracking-[0.25em] text-rose-100/80">Next activation in {countdown}</p> : null}
           </div>
         </div>
 
