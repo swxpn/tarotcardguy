@@ -1,7 +1,7 @@
 {
-  "/auth/callback/route": "/auth/callback",
   "/_not-found/page": "/_not-found",
-  "/reading/[id]/page": "/reading/[id]",
+  "/auth/callback/route": "/auth/callback",
   "/page": "/",
+  "/reading/[id]/page": "/reading/[id]",
   "/dashboard/page": "/dashboard"
 }
