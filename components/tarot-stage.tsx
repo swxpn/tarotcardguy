@@ -134,8 +134,9 @@ export function TarotStage({ userId, initialReadingCount }: TarotStageProps) {
                   transition={{ delay: index * 0.15, duration: 0.5 }}
                 >
                   <TarotCardFace card={card} isFaceUp={isFaceUp} onClick={() => handleRevealCard(card.id)} />
-                  <div className="mt-3 text-center text-sm uppercase tracking-[0.35em] text-amber-100/80">
-                    {card.position}
+                  <div className="mt-3 space-y-1 text-center text-slate-300">
+                    <p className="text-xs uppercase tracking-[0.35em] text-amber-100/80">{card.position}</p>
+                    <p className="text-sm leading-6 text-slate-300">{card.description}</p>
                   </div>
                 </motion.div>
               );

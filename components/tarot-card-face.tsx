@@ -12,12 +12,12 @@ export function TarotCardFace({ card, isFaceUp, onClick }: TarotCardFaceProps) {
     <button
       type="button"
       onClick={onClick}
-      className="group relative w-full aspect-[1086/1810] rounded-[2rem] outline-none"
+      className="group relative aspect-[1086/1810] w-full outline-none"
       aria-label={`Flip ${card.position} card`}
     >
       <div className="relative h-full w-full [perspective:1200px]">
         <div
-          className="absolute inset-0 rounded-[2rem] transition-transform duration-700 [transform-style:preserve-3d]"
+          className="absolute inset-0 transition-transform duration-700 [transform-style:preserve-3d]"
           style={{ transform: isFaceUp ? 'rotateY(180deg)' : 'rotateY(0deg)' }}
         >
           <div className="absolute inset-0 [backface-visibility:hidden]">

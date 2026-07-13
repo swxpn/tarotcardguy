@@ -22,19 +22,19 @@ export function TarotCardArt({ card, variant, compact = false }: TarotCardArtPro
 
   if (variant === 'back') {
     return (
-      <div className="relative h-full overflow-hidden rounded-[2rem] border border-amber-200/20 bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.22),transparent_45%),linear-gradient(145deg,#0f172a_0%,#020617_100%)] shadow-[0_0_40px_rgba(251,191,36,0.08)]">
+      <div className="relative h-full overflow-hidden border border-amber-200/20 bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.22),transparent_45%),linear-gradient(145deg,#0f172a_0%,#020617_100%)] shadow-[0_0_40px_rgba(251,191,36,0.08)]">
         <div className="absolute inset-0 opacity-70" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(251,191,36,0.22) 1px, transparent 0)', backgroundSize: '18px 18px' }} />
-        <div className="absolute inset-0 rounded-[2rem] border border-amber-100/10" />
+        <div className="absolute inset-0 border border-amber-100/10" />
       </div>
     );
   }
 
   return (
-    <div className={`relative h-full overflow-hidden rounded-[2rem] border ${variant === 'public' ? 'border-white/10 bg-white/5 backdrop-blur' : 'border-white/10 bg-gradient-to-br from-amber-100 via-amber-50 to-orange-200 text-slate-950 shadow-[0_0_35px_rgba(255,255,255,0.18)]'}`}>
+    <div className={`relative h-full overflow-hidden border ${variant === 'public' ? 'border-white/10 bg-white/5 backdrop-blur' : 'border-white/10 bg-gradient-to-br from-amber-100 via-amber-50 to-orange-200 text-slate-950 shadow-[0_0_35px_rgba(255,255,255,0.18)]'}`}>
       <div className="absolute inset-0 opacity-100" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.14) 1px, transparent 0)', backgroundSize: '20px 20px' }} />
       <div className={`absolute inset-0 bg-gradient-to-br ${accent} blur-2xl`} style={{ opacity: glowOpacity }} />
       <div className="relative h-full w-full p-3 sm:p-4">
-        <div className="relative h-full w-full overflow-hidden rounded-[1.4rem]">
+        <div className="relative h-full w-full overflow-hidden">
           <Image
             src={imagePath}
             alt={card.name}

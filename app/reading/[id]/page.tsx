@@ -67,11 +67,12 @@ export default async function ReadingPage({ params }: ReadingPageProps) {
           {cards.map((card) => (
             <article
               key={card?.id}
-              className="rounded-[2rem] border border-white/10 bg-white/5 p-3 backdrop-blur"
+              className="border border-white/10 bg-white/5 p-3 backdrop-blur"
             >
-              <div className="aspect-[1086/1810] overflow-hidden rounded-[1.5rem]">
+              <div className="aspect-[1086/1810] overflow-hidden">
                 {card ? <TarotCardArt card={card} variant="public" compact /> : null}
               </div>
+              <p className="mt-3 text-sm leading-6 text-slate-300">{card?.description}</p>
             </article>
           ))}
         </section>
