@@ -26,10 +26,6 @@ export function TarotCardFace({ card, isFaceUp, onClick }: TarotCardFaceProps) {
 
           <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)]">
             <TarotCardArt card={card} variant="front" />
-            <div className="absolute inset-x-5 bottom-5 rounded-[1.5rem] border border-slate-900/10 bg-white/55 p-4 text-slate-700 shadow-sm">
-              <p className="text-xs uppercase tracking-[0.35em] text-amber-800">Card Notes</p>
-              <p className="mt-2 text-sm leading-6">{card.uprightMeaning}</p>
-            </div>
           </div>
         </div>
       </div>

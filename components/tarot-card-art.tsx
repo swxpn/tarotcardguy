@@ -19,27 +19,9 @@ export function TarotCardArt({ card, variant, compact = false }: TarotCardArtPro
 
   if (variant === 'back') {
     return (
-      <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-amber-200/20 bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.22),transparent_45%),linear-gradient(145deg,#0f172a_0%,#020617_100%)] p-5 shadow-[0_0_40px_rgba(251,191,36,0.08)]">
-        <div className="absolute inset-0 opacity-70" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(251,191,36,0.25) 1px, transparent 0)', backgroundSize: '18px 18px' }} />
-        <div className="absolute inset-x-6 top-6 h-px bg-gradient-to-r from-transparent via-amber-200/60 to-transparent" />
-        <div className="absolute inset-x-6 bottom-6 h-px bg-gradient-to-r from-transparent via-amber-200/60 to-transparent" />
-
-        <div className="relative flex items-center justify-between text-[0.65rem] uppercase tracking-[0.35em] text-amber-100/80">
-          <span>{card.arcana}</span>
-          <span>{card.suit ?? 'Arcana'}</span>
-        </div>
-
-        <div className="relative mx-auto flex h-40 w-28 items-center justify-center rounded-[1.5rem] border border-amber-200/20 bg-black/20">
-          <div className={`absolute inset-2 rounded-[1.25rem] bg-gradient-to-br ${accent} opacity-20 blur-sm`} />
-          <div className="relative flex h-24 w-24 items-center justify-center rounded-full border border-amber-100/40 bg-slate-950/70 text-center text-[0.65rem] uppercase tracking-[0.35em] text-amber-50">
-            {card.imagePlaceholder.split(' - ').at(-1)}
-          </div>
-        </div>
-
-        <div className="relative text-center">
-          <p className="text-xs uppercase tracking-[0.3em] text-amber-100/90">Tap to reveal</p>
-          <div className="mx-auto mt-3 h-10 w-10 rounded-full border border-amber-200/30 bg-amber-200/10" />
-        </div>
+      <div className="relative h-full overflow-hidden rounded-[2rem] border border-amber-200/20 bg-slate-950 shadow-[0_0_40px_rgba(251,191,36,0.08)]">
+        <div className="absolute inset-0 bg-[url('/card-back.png')] bg-cover bg-center bg-no-repeat" />
+        <div className="absolute inset-0 bg-slate-950/10" />
       </div>
     );
   }
@@ -78,7 +60,7 @@ export function TarotCardArt({ card, variant, compact = false }: TarotCardArtPro
         </div>
 
         <div className={`rounded-[1.5rem] border p-4 ${variant === 'public' ? 'border-white/10 bg-black/20 text-slate-200' : 'border-slate-900/10 bg-white/55 text-slate-700'}`}>
-          <p className="text-xs uppercase tracking-[0.35em] text-amber-800/80">Meaning</p>
+          <p className="text-xs uppercase tracking-[0.35em] text-amber-800/80">Card</p>
           <p className="mt-2 text-sm leading-7">{variant === 'public' ? 'This card was revealed for a public reading.' : 'Reveal this card to uncover its role in the spread.'}</p>
         </div>
       </div>

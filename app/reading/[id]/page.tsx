@@ -78,7 +78,6 @@ export default async function ReadingPage({ params }: ReadingPageProps) {
                 {card ? <TarotCardArt card={card} variant="public" compact /> : null}
               </div>
               <p className="mt-4 text-sm leading-6 text-slate-300">{card?.description}</p>
-              <p className="mt-4 text-sm leading-6 text-slate-200">{card?.uprightMeaning}</p>
             </article>
           ))}
         </section>
