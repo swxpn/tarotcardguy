@@ -25,7 +25,7 @@ export function AuthButton() {
       type="button"
       onClick={handleSignIn}
       disabled={isLoading}
-      className="inline-flex items-center justify-center gap-2 rounded-full border border-amber-300/40 bg-amber-200 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-amber-100 disabled:cursor-not-allowed disabled:opacity-70"
+      className="inline-flex items-center justify-center gap-2 rounded-full border border-rose-300/40 bg-rose-200 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-rose-100 disabled:cursor-not-allowed disabled:opacity-70"
     >
       {isLoading ? <LoaderCircle className="h-4 w-4 animate-spin" /> : null}
       Sign in with Google to Reveal Your Fate

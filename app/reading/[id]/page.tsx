@@ -54,7 +54,7 @@ export default async function ReadingPage({ params }: ReadingPageProps) {
         </Link>
 
         <section className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur">
-          <div className="flex items-center gap-2 text-amber-200/80">
+          <div className="flex items-center gap-2 text-rose-200/80">
             <Sparkles className="h-5 w-5" />
             <p className="text-sm uppercase tracking-[0.35em]">Public Reading</p>
           </div>

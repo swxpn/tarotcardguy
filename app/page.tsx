@@ -12,7 +12,7 @@ export default async function HomePage() {
       <main className="min-h-screen px-6 py-16 text-slate-100">
         <div className="mx-auto flex max-w-5xl flex-col gap-8">
           <section className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-glow backdrop-blur">
-            <p className="text-sm uppercase tracking-[0.4em] text-amber-200/80">Digital Tarot</p>
+            <p className="text-sm uppercase tracking-[0.4em] text-rose-200/80">Digital Tarot</p>
             <h1 className="mt-4 max-w-2xl text-4xl font-semibold leading-tight md:text-6xl">
               Your fate is waiting inside the dashboard.
             </h1>
@@ -21,7 +21,7 @@ export default async function HomePage() {
             </p>
             <Link
               href="/dashboard"
-              className="mt-8 inline-flex items-center gap-2 rounded-full border border-amber-300/40 bg-amber-200 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-amber-100"
+              className="mt-8 inline-flex items-center gap-2 rounded-full border border-rose-300/40 bg-rose-200 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-rose-100"
             >
               Enter the dashboard
               <ArrowRight className="h-4 w-4" />
@@ -36,7 +36,7 @@ export default async function HomePage() {
     <main className="min-h-screen px-6 py-16 text-slate-100">
       <div className="mx-auto flex max-w-5xl flex-col gap-8">
         <section className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-glow backdrop-blur">
-          <div className="flex items-center gap-2 text-amber-200/80">
+          <div className="flex items-center gap-2 text-rose-200/80">
             <Stars className="h-5 w-5" />
             <p className="text-sm uppercase tracking-[0.4em]">Digital Tarot</p>
           </div>

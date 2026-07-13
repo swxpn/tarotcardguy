@@ -78,15 +78,15 @@ export function TarotStage({ userId, initialReadingCount }: TarotStageProps) {
       <div className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur lg:p-10">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <p className="text-sm uppercase tracking-[0.35em] text-amber-200/80">Tarot Engine</p>
+            <p className="text-sm uppercase tracking-[0.35em] text-rose-200/80">Tarot Engine</p>
             <h1 className="mt-2 text-3xl font-semibold md:text-5xl">The veil is open.</h1>
             <p className="mt-3 max-w-2xl text-slate-300">
               Draw a three-card spread for Past, Present, and Future. Cards flip one by one when you tap them.
             </p>
           </div>
 
-          <div className="rounded-2xl border border-amber-300/20 bg-amber-300/10 px-4 py-3 text-sm text-amber-50">
-            <p className="text-xs uppercase tracking-[0.3em] text-amber-200/80">Today</p>
+          <div className="rounded-2xl border border-rose-300/20 bg-rose-300/10 px-4 py-3 text-sm text-rose-50">
+            <p className="text-xs uppercase tracking-[0.3em] text-rose-200/80">Today</p>
             <p className="mt-1 font-semibold">{remaining}/4 readings remaining</p>
           </div>
         </div>
@@ -96,7 +96,7 @@ export function TarotStage({ userId, initialReadingCount }: TarotStageProps) {
             type="button"
             onClick={handleDraw}
             disabled={!canDraw || isDrawing}
-            className="inline-flex items-center gap-2 rounded-full border border-amber-300/40 bg-amber-200 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-amber-100 disabled:cursor-not-allowed disabled:opacity-70"
+            className="inline-flex items-center gap-2 rounded-full border border-rose-300/40 bg-rose-200 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-rose-100 disabled:cursor-not-allowed disabled:opacity-70"
           >
             <WandSparkles className="h-4 w-4" />
             {isDrawing ? 'Shuffling the stars...' : 'Draw Cards'}
@@ -116,7 +116,7 @@ export function TarotStage({ userId, initialReadingCount }: TarotStageProps) {
 
         {message ? (
           <div className="mt-4 flex items-center gap-3 rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-slate-200">
-            {canDraw ? <Sparkles className="h-4 w-4 text-amber-200" /> : <AlertTriangle className="h-4 w-4 text-amber-300" />}
+            {canDraw ? <Sparkles className="h-4 w-4 text-rose-200" /> : <AlertTriangle className="h-4 w-4 text-rose-300" />}
             <span>{message}</span>
           </div>
         ) : null}
@@ -135,7 +135,7 @@ export function TarotStage({ userId, initialReadingCount }: TarotStageProps) {
                 >
                   <TarotCardFace card={card} isFaceUp={isFaceUp} onClick={() => handleRevealCard(card.id)} />
                   <div className="mt-3 space-y-1 text-center text-slate-300">
-                    <p className="text-xs uppercase tracking-[0.35em] text-amber-100/80">{card.position}</p>
+                    <p className="text-xs uppercase tracking-[0.35em] text-rose-100/80">{card.position}</p>
                     <p className="text-sm leading-6 text-slate-300">{card.description}</p>
                   </div>
                 </motion.div>
@@ -148,7 +148,7 @@ export function TarotStage({ userId, initialReadingCount }: TarotStageProps) {
           <div className="mt-10 rounded-3xl border border-white/10 bg-black/20 p-6">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <p className="text-sm uppercase tracking-[0.35em] text-amber-200/80">Reading Interpretation</p>
+                <p className="text-sm uppercase tracking-[0.35em] text-rose-200/80">Reading Interpretation</p>
                 <h2 className="mt-2 text-2xl font-semibold">Past, Present, Future</h2>
               </div>
             </div>

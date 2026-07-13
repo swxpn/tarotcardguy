@@ -13,7 +13,7 @@ export async function Navbar() {
   return (
     <header className="border-b border-white/10 bg-slate-950/40 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="text-sm font-semibold uppercase tracking-[0.35em] text-amber-200">
+        <Link href="/" className="text-sm font-semibold uppercase tracking-[0.35em] text-rose-200">
           Tarot Card Guy
         </Link>
 
@@ -29,7 +29,7 @@ export async function Navbar() {
                 </Link>
               ) : null}
               <div className="hidden items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200 md:flex">
-                <UserCircle2 className="h-4 w-4 text-amber-200" />
+                <UserCircle2 className="h-4 w-4 text-rose-200" />
                 <span>{user.email}</span>
               </div>
               <LogoutButton />
@@ -37,7 +37,7 @@ export async function Navbar() {
           ) : (
             <Link
               href="/"
-              className="rounded-full border border-amber-300/40 bg-amber-200 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-amber-100"
+              className="rounded-full border border-rose-300/40 bg-rose-200 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-rose-100"
             >
               Sign in
             </Link>
