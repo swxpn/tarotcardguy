@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from 'react';
-import { LoaderCircle } from 'lucide-react';
 import { createSupabaseBrowserClient } from '@/lib/supabase/browser';
+import { Throbber } from '@/components/throbber';
 
 export function AuthButton() {
   const [isLoading, setIsLoading] = useState(false);
@@ -27,7 +27,7 @@ export function AuthButton() {
       disabled={isLoading}
       className="inline-flex items-center justify-center gap-2 rounded-full border border-rose-300/40 bg-rose-200 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-rose-100 disabled:cursor-not-allowed disabled:opacity-70"
     >
-      {isLoading ? <LoaderCircle className="h-4 w-4 animate-spin" /> : null}
+      {isLoading ? <Throbber /> : null}
       Sign in with Google to Reveal Your Fate
     </button>
   );

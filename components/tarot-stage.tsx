@@ -14,6 +14,7 @@ import {
 } from '@/lib/readings';
 import type { DrawnTarotCard } from '@/lib/tarot/engine';
 import { TarotCardFace } from '@/components/tarot-card-face';
+import { Throbber } from '@/components/throbber';
 
 type TarotStageProps = {
   userId: string;
@@ -129,7 +130,7 @@ export function TarotStage({ userId, initialReadingCount }: TarotStageProps) {
             disabled={!canDraw || isDrawing}
             className="inline-flex items-center gap-2 rounded-full border border-rose-300/40 bg-rose-200 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-rose-100 disabled:cursor-not-allowed disabled:opacity-70"
           >
-            <WandSparkles className="h-4 w-4" />
+            {isDrawing ? <Throbber /> : <WandSparkles className="h-4 w-4" />}
             {isDrawing ? 'Shuffling the stars...' : 'Draw Cards'}
           </button>
 
