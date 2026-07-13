@@ -166,10 +166,12 @@ export function TarotStage({ userId, initialReadingCount }: TarotStageProps) {
                   transition={{ delay: index * 0.15, duration: 0.5 }}
                 >
                   <TarotCardFace card={card} isFaceUp={isFaceUp} onClick={() => handleRevealCard(card.id)} />
-                  <div className="mt-3 space-y-1 text-center text-slate-300">
-                    <p className="text-xs uppercase tracking-[0.35em] text-rose-100/80">{card.position}</p>
-                    <p className="text-sm leading-6 text-slate-300">{card.description}</p>
-                  </div>
+                  {isFaceUp ? (
+                    <div className="mt-3 space-y-1 text-center text-slate-300">
+                      <p className="text-xs uppercase tracking-[0.35em] text-rose-100/80">{card.position}</p>
+                      <p className="text-sm leading-6 text-slate-300">{card.description}</p>
+                    </div>
+                  ) : null}
                 </motion.div>
               );
             })}
@@ -183,6 +185,24 @@ export function TarotStage({ userId, initialReadingCount }: TarotStageProps) {
                 <p className="text-sm uppercase tracking-[0.35em] text-rose-200/80">Reading Interpretation</p>
                 <h2 className="mt-2 text-2xl font-semibold">Past, Present, Future</h2>
               </div>
+            </div>
+
+            <div className="mt-6 grid gap-4 lg:grid-cols-3">
+              {result.cards.map((card) => {
+                const isRevealed = revealedCards.includes(card.id);
+
+                return (
+                  <div key={card.id} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <p className="text-xs uppercase tracking-[0.35em] text-rose-200/80">{card.position}</p>
+                    <h3 className="mt-2 text-xl font-semibold text-slate-50">
+                      {isRevealed ? card.name : 'Reveal this card'}
+                    </h3>
+                    <p className="mt-3 text-sm leading-6 text-slate-300">
+                      {isRevealed ? card.description : 'The interpretation appears after you flip this card.'}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         ) : null}
