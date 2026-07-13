@@ -12,7 +12,7 @@ export function TarotCardFace({ card, isFaceUp, onClick }: TarotCardFaceProps) {
     <button
       type="button"
       onClick={onClick}
-      className="group relative h-[340px] w-full rounded-[2rem] outline-none"
+      className="group relative w-full aspect-[1086/1810] rounded-[2rem] outline-none"
       aria-label={`Flip ${card.position} card`}
     >
       <div className="relative h-full w-full [perspective:1200px]">

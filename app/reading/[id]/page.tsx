@@ -59,10 +59,7 @@ export default async function ReadingPage({ params }: ReadingPageProps) {
             <p className="text-sm uppercase tracking-[0.35em]">Public Reading</p>
           </div>
           <h1 className="mt-4 text-4xl font-semibold md:text-6xl">Your reading is revealed.</h1>
-          <p className="mt-4 max-w-2xl text-slate-300">
-            This public link shows the three-card spread and the meanings that were drawn at the moment the
-            reading was created.
-          </p>
+          <p className="mt-4 max-w-2xl text-slate-300">This public link shows the three-card spread as artwork.</p>
           <p className="mt-4 text-xs uppercase tracking-[0.35em] text-slate-400">Shared reading</p>
         </section>
 
@@ -70,14 +67,11 @@ export default async function ReadingPage({ params }: ReadingPageProps) {
           {cards.map((card) => (
             <article
               key={card?.id}
-              className="rounded-[2rem] border border-white/10 bg-white/5 p-5 backdrop-blur"
+              className="rounded-[2rem] border border-white/10 bg-white/5 p-3 backdrop-blur"
             >
-              <p className="text-xs uppercase tracking-[0.35em] text-amber-200/80">{card?.position}</p>
-              <h2 className="mt-3 text-2xl font-semibold text-slate-50">{card?.name}</h2>
-              <div className="mt-5">
+              <div className="aspect-[1086/1810] overflow-hidden rounded-[1.5rem]">
                 {card ? <TarotCardArt card={card} variant="public" compact /> : null}
               </div>
-              <p className="mt-4 text-sm leading-6 text-slate-300">{card?.description}</p>
             </article>
           ))}
         </section>

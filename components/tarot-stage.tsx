@@ -151,16 +151,6 @@ export function TarotStage({ userId, initialReadingCount }: TarotStageProps) {
                 <h2 className="mt-2 text-2xl font-semibold">Past, Present, Future</h2>
               </div>
             </div>
-
-            <div className="mt-6 grid gap-4 lg:grid-cols-3">
-              {result.cards.map((card) => (
-                <div key={card.id} className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <p className="text-xs uppercase tracking-[0.35em] text-amber-200/80">{card.position}</p>
-                  <h3 className="mt-2 text-xl font-semibold text-slate-50">{card.name}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-300">{card.description}</p>
-                </div>
-              ))}
-            </div>
           </div>
         ) : null}
       </div>
